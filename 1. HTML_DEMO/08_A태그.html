@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+    body{height: 3000px;}
+    .btn{
+        display: block;
+        width: 120px;
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+        text-decoration: none;
+        margin: 5px;
+        border-radius: 10px;
+        background-color: aquamarine;
+        font-size: .8rem;
+        color: aliceblue;
+        box-shadow: 3px 3px 3px lightblue;
+        opacity: .8;
+        transition: 1s;
+
+    }
+    .btn:hover{opacity: 1;}
+    .btn-1{background-color: orange;}
+    .btn-2{background-color: crimson;}
+    .btn-3{background-color: skyblue;}
+    
+</style>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <a class="btn btn-1" href="./06_test.html">문서이동</a>
+    <a class="btn btn-2" href="./07_test.html" target="_blank">문서이동</a>
+    <a class="btn btn-3" href="https://naver.com">naver</a>
+
+<hr />
+<!--인라인 블럭 라인안에 속해있으면서도 크기 조정이 가능하다-->
+<a href="https://www.daum.net/" target="frm1">Daum으로 이동</a>
+<iframe src="" frameborder="1" width="400px" height="400px" name="frm1"></iframe>
+<!-- 개발이 안되었을 때는 무조건 보이드 값을 넣어줘야 함-->
+<hr/>
+<a href="javascript:void(0)">기능1</a>
+<a href="javascript:void(0)">기능2</a>
+
+
+</body>
+</html>
