@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+    <style>
+        * {
+            font-size: 0.8rem;
+            box-sizing: border-box;
+            border-color: aliceblue;
+
+        }
+
+        a {
+            text-decoration: none;
+            color: rgb(119, 38, 38);
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .btn {
+
+
+
+            min-width: 70px;
+            text-align: center;
+            line-height: 35px;
+            height: 100%;
+            font-size: 0.8rem;
+            background-color: rgb(105, 255, 205);
+            border: 1px solid;
+            border-color: white;
+
+
+        }
+
+        .btn-submit {
+            width: 100%;
+            background-color: rgb(152, 255, 212);
+            clear: rgb(173, 42, 42);
+            border: 1px;
+
+
+        }
+
+        form {
+            width: 380px;
+            margin: 50px auto;
+            border: 1px solid;
+        }
+
+        form>.row {
+            margin: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
+            height: 35px;
+            text-align: center;
+            border-color: rgb(255, 255, 255);
+
+            border-radius: 10px;
+            border: 1px solid;
+
+
+        }
+
+        form>.row>label {
+            display: block;
+            min-width: 85px;
+            height: 100%;
+            line-height: 35px;
+
+            border-color: rgb(0, 0, 0);
+            border-radius: 10%;
+        }
+
+        form>.row>input[type="text"],
+        form>.row>input[type="password"],
+        form>.row>select {
+            height: 100%;
+            width: 100%;
+
+
+
+
+        }
+
+        .top-header {
+            height: 100% !important;
+            width: 100% !important;
+            background-color: rgb(149, 255, 211) !important;
+        }
+
+        .title {
+            margin-bottom: px !important;
+            border-bottom: 1px solid rgb(172, 9, 9);
+            padding-bottom: 10px;
+        }
+
+        .title>h1 {
+            background-color: rgb(182, 10, 139);
+
+            width: 100%;
+
+            text-align: center;
+            font-size: 1.5rem;
+            text-align: center;
+
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 
+    form: 사용자로부터 특정정보를 받아 서버로 전달하는데 사용되는 태그
+    action Atrribute: 전달받는 서버 URL
+    method Atrribute: 서버로 요청하는 방식
+     - GET: 사용자 요청 정보를 Query String으로 전달(디폴트)/노출해도 상관x
+     - POST: 사용자 요청 정보를 Request body(Payload)로 전달/노출해도 괜찮음
+     - PUT: 
+     - PATCH:
+     - DELETE:  
+    -->
+
+    <form class="" action="./07_test.jsp" method="post">
+        <div class="">
+            
+                <h1>회원가입</h1>
+            
+        </div>
+        <div class="row">
+            <label>아이디</label>
+            <input name="userid" type="text" />
+            <a class="btn" href="javascript:void(0)">중복확인</a>
+        </div>
+
+        <div class="row">
+            <label>비밀번호</label>
+            <input name="password" type="password" />
+            <a href="javascript:void(0)"></a>
+        </div>
+
+
+        <div class="row">
+            <label>비밀번호 확인</label>
+            <input name="repassword" type="password" />
+
+        </div>
+
+        <div class="row">
+            <label>이름</label>
+            <input name="username" type="text" />
+
+        </div>
+
+        <div class="row">
+            <label>우편번호</label>
+            <input name="zipcode" type="text" />
+            <a class="btn" href="javascript:void(0)">검색</a>
+        </div>
+
+        <div class="row">
+            <label>기본주소</label>
+            <input name="addr1" type="text" />
+            <a class="btn" href="javascript:void(0)">검색</a>
+        </div>
+
+        <div class="row">
+            <label>상세주소</label>
+            <input name="addr2" type="text" />
+
+        </div>
+
+        <div class="row">
+            <label>휴대전화</label>
+            <select>
+                <option value="" selected>010</option>
+                <option value="">011</option>
+            </select>
+            <input type="text" />
+            <input type="text" />
+
+
+        </div class="row">
+
+        <div class="row">
+            <label>연락처</label>
+            <select>
+                <option value="" selected>053</option>
+                <option value="">055</option>
+                <option value="">02</option>
+            </select>
+            <input type="text" />
+            <input type="text" />
+
+        </div>
+
+        <div class="row">
+            <label>이메일</label>
+            <input type="text" />
+            <select>
+                <option value="" selected>@naver.com</option>
+                <option value="">@google.com</option>
+                <option value="">@outlook.co.kr</option>
+            </select>
+
+        </div>
+
+        <div class="row">
+            <label>생년월일</label>
+            <input name="birth" type="radio" /> 양력
+            <input name="birth" type="radio" /> 음력
+        </div>
+
+
+
+
+
+
+
+
+
+        <div class="row">
+
+            <select>
+                <option value="" selected>2025</option>
+                <option value="">2024</option>
+                <option value="">2023</option>
+            </select>
+
+            <select>
+                <option value="" selected>04</option>
+                <option value="">05</option>
+                <option value="">06</option>
+            </select>
+
+            <select>
+                <option value="" selected>09</option>
+                <option value="">10</option>
+                <option value="">11</option>
+            </select>
+        </div>
+        <hr />
+
+        <div class="row">
+            <input id="email_recv" type="checkbox" />
+            <label for="email_recv">이메일 수신에 동의합니다.</label>
+
+
+        </div>
+
+
+        <div class="row">
+            <input id="sms_recv" type="checkbox" />
+            <label for="sms_recv">문자메시지 수신에 동의합니다.</label>
+
+
+        </div>
+        <div class="row">
+            <input class="btn btn-submit" type="submit" value="회원가입" />
+
+        </div>
+
+
+
+
+    </form>
+</body>
+
+</html>
