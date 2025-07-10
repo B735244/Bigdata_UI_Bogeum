@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .wrapper {
+            height: 3000px;
+        }
+
+        .bg {
+            height: 400px;
+            width: 100%;
+            top: 500px;
+            position: absolute;
+            background-color: aqua;
+            background-image: url('https://cdn.pixabay.com/photo/2014/01/06/20/10/norwegian-forest-cat-239579_1280.jpg');
+            /* 이미지 사이즈 cover:내가 맞춰놓은 기준으로 나옴   contain: 사진 기준으로 나옴*/
+            /* background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center; */
+
+            /*스타벅스 예시로 스크롤을 내리면 뒷 배경은 고정하고 앞에가 움직이는것*/
+            background-size: cover;
+            background-attachment: fixed;
+
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="bg"> </div>
+    </div>
+</body>
+
+</html>
