@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        ul{
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+
+        a{
+            text-decoration: none;
+            color: black;
+        }
+        body{
+            padding: 0;
+            margin: 0;
+            font-size: .8rem;
+        }
+
+.wrapper{}
+.wrapper>header{}
+.wrapper>header>.top-header{
+}
+
+.wrapper>header>nav{
+    height: 30px;
+    background-color: orange;
+    border-bottom: 1px solid lightblue;
+
+ 
+
+
+}
+
+.wrapper>header>nav>ul.main_menu{
+    display: flex;
+    justify-content: space-between;
+    /* align-items: center; */
+/* gap: 20px; */
+/* position: absolute; */
+/* width: 140px; */
+height: 100%;
+
+}
+
+.wrapper>header>nav>ul.main_menu>li{
+    height: 100%;
+    border: 1px solid ;
+    border-color: red;
+    line-height: solid;
+    padding: 0 15px;
+    position: relative;
+
+
+}
+
+.wrapper>header>nav>ul.main_menu>li>a{
+    display: block;
+   
+
+}    
+
+.wrapper>header>nav>ul.main_menu>li>ul.sub-menu{
+    border: 1px solid;
+    width: 140px;
+position: absolute;
+left:0;
+top: 50px;
+padding: 0 15px;
+padding-bottom: 10px;
+border-right: 1px solid lightblue;
+border-left: 1px solid lightblue;
+
+   
+    
+    
+}
+.wrapper>header>nav>ul.main_menu>li>ul.sub-menu>li{
+    max-height: 35px;
+}
+.wrapper>header>nav>ul.main_menu>li:hover>.sub-menu{
+    display: block;
+
+    
+}
+.wrapper>header>nav>ul.main_menu>li>ul.sub-menu{
+display: block;
+    
+}
+
+
+
+
+</style>
+</head>
+
+<!--   .wrapper>header>div.top-header+nav>ul.main-menu>li*3+a[href="javascript"]-->
+
+<body>
+    <div class="wrapper">
+        <header>
+            <div class="top-header"></div>
+            <nav>
+                <ul class="main_menu">
+                    <li>
+                        <a href="javascript:void(0)">ALL</a>
+                        <ul class="sub-menu">
+                            <li><a href="javascript:void(0)">패키지</a></li>
+                            <li><a href="javascript:void(0)">신발</a></li>
+                            <li><a href="javascript:void(0)">의류</a></li>
+                            <li><a href="javascript:void(0)">키즈</a></li>
+                            <li><a href="javascript:void(0)">용품</a></li>
+                            <li><a href="javascript:void(0)">콜라보</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)">BEST</a>
+                        <ul class="sub-menu">
+                            <li><a href="javascript:void(0)">1_패키지</a></li>
+                            <li><a href="javascript:void(0)">2_SUBMENU</a></li>
+                            <li><a href="javascript:void(0)">3_MAINMENU</a></li>
+                            <li><a href="javascript:void(0)">4_SUBMENU</a></li>
+                            <li><a href="javascript:void(0)">5_SUBMENU</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)">충무공 이순신 시리즈</a>
+                        <ul class="sub-menu">
+                            <li><a href="javascript:void(0)">패키지</a></li>
+                            <li><a href="javascript:void(0)">신발</a></li>
+                            <li><a href="javascript:void(0)">의류</a></li>
+                            <li><a href="javascript:void(0)">모자</a></li>
+                            <li><a href="javascript:void(0)">키즈</a></li>
+                        </ul>
+                    </li>
+                </ul>
+
+</body>
+
+</html>

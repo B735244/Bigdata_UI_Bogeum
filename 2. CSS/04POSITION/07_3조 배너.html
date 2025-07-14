@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        a {
+            text-decoration: none;
+            color: black;
+        }
+
+        ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            padding: 0;
+            margin: 0;
+            background-color: white
+        }
+
+        .top-header {
+            background-image: url(https://file.cafe24cos.com/banner-admin-live/upload/lakai1922/a234b13c-5727-4a99-b1e2-30dd2454a167.png);
+            height: 200px;
+
+            background-position: center;
+            background-repeat: no-repeat;
+            background-color: white;
+        }
+
+
+        .wrapper>header {
+            /* border: 1px solid;
+            border-color: black; */
+            background-color: white;
+            border-bottom: 1px solid rgba(128, 128, 128, 0.3);
+        }
+
+        .wrapper>subheader {
+            background-color: white;
+        }
+
+        .wrapper>header>nav {
+            border: 1px solid;
+
+            position: relative;
+            height: 100%;
+            width: 1280px;
+            padding: 0 10px;
+            background-color: #1a202c;
+
+
+            margin: auto;
+        }
+
+        .wrapper>header>nav>ul.tag {
+            position: absolute;
+            top: 12px;
+            left: 1620px;
+        }
+
+        .wrapper>header>nav>ul.main-menu {
+            display: flex;
+            justify-content: space-between;
+            width: 100px;
+            height: 100%;
+            margin-left: 90px;
+            margin-right: 90px;
+            padding: 0 20px;
+        }
+
+        .wrapper>header>nav>ul.main-menu>li {
+            height: 100%;
+            /* width: 50px; */
+           
+            margin: auto;
+            
+        }
+
+        .wrapper>header>nav>ul.main-menu>li>a {
+            display: block;
+            height: 100%;
+            line-height: 50px;
+            padding: 0 20px;
+        }
+
+        .wrapper>header>nav>ul.main-menu>li>ul.sub-menu {
+            position: absolute;
+            z-index: 9999;
+            left: auto;
+            width: 200px;
+            top: 50x;
+            display: none;
+            background-color: white;
+            border: 1px solid rgba(128, 128, 128, 0.3);
+        }
+
+        .wrapper>header>nav>ul.main-menu>li>ul.sub-menu>li {
+
+            height: 50px;
+            line-height: 50px;
+            padding: 0 20px;
+            position: relative;
+            top: 4px;
+        }
+
+        .wrapper>header>nav>ul.main-menu>li>ul.sub-menu>li>a {
+            display: block;
+        }
+
+        .wrapper>header>nav>ul.main-menu>li:hover>.sub-menu {
+            display: block;
+        }
+
+        /* .logo {
+            background-image: url(./Logo1.png);
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            width: 90px;
+            height: 90px; 
+    }*/
+       
+
+        
+
+        .login {
+            /* border: 1px solid; */
+            position: absolute;
+            top: 31px;
+            left: 1000px;
+        }
+        
+
+        .sign-in {
+            position: absolute;
+            top: 31px;
+            left:1100px;
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <div class="wrapper">
+        <header>
+            <!-- <div class="top-header"></div> -->
+            <nav>
+                <ul class="main-menu">
+                    <li>
+                     <!-- <div class="logo"><a href="javascript:void(0)"></a></div>   -->
+                    <img src="./Logo1.png" alt="로고">
+
+                    </li>
+
+
+                    <li>
+                        <a style="color: white;" href="javascript:void(0)">ALL</a>
+                        <ul class="sub-menu">
+                            <li><a href="javascript:void(0)">Home</a></li>
+                            <li><a href="javascript:void(0)">Discovery Queue</a></li>
+                            <li><a href="javascript:void(0)">Wishlist</a></li>
+                            <li><a href="javascript:void(0)">Pointsshop</a></li>
+                            <li><a href="javascript:void(0)">News</a></li>
+                            <li><a href="javascript:void(0)">stats</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a style="color: white;" href="javascript:void(0)">Event</a>
+                        <ul class="sub-menu">
+                            <li><a href="javascript:void(0)">Home</a></li>
+                            <li><a href="javascript:void(0)">Discussion</a></li>
+                            <li><a href="javascript:void(0)">Workshop</a></li>
+                            <li><a href="javascript:void(0)">Market</a></li>
+                            <li><a href="javascript:void(0)">Broadcast</a></li>
+
+                        </ul>
+                    </li>
+                    <li>
+                        <a style="color: white;" href="javascript:void(0)">About</a>
+
+                    </li>
+                    <li>
+                        <a style="color: white;" href="javascript:void(0)">Support </a>
+                    </li>
+                    <li>
+                      <div class="login">
+                        <a style="color: white;" href="javascript:void(0)">login</a>
+                      </div> 
+                    </li>
+
+                    <li>
+                      <div class="sign-in">
+                        <a style="color: white;" href="javascript:void(0)">sign-in</a>
+                      </div> 
+                    </li>
+
+                </ul>
+
+            </nav>
+
+        </header>
+        <header style="border: none;">
+            <nav>
+                <ul class="main-menu">
+                    <li><a href="javascript:void(0)">COMMUNITY ▽</a>
+                        <ul class="sub-menu">
+                            <li href="javascript:void(0)">ARCHIVE</li>
+                            <li href="javascript:void(0)">상품 사용후기</li>
+                            <li href="javascript:void(0)">고객센터</li>
+                            <li href="javascript:void(0)">공지사항</li>
+                            <li href="javascript:void(0)">이용안내 FAQ</li>
+                            <li href="javascript:void(0)">카카오톡상담센터</li>
+                        </ul>
+                    </li>
+                </ul>
+                <!-- <ul class="tag">
+                        <li><a href="javascript:void(0)">sss</a><a href="javascript:void(0)"></a></li>
+                    </ul> -->
+            </nav>
+        </header>
+
+    </div>
+</body>
+
+</html>
