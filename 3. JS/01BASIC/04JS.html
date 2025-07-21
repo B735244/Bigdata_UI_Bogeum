@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    
+   
+    <script>
+        // number
+        console.log(typeof 10);
+        console.log(typeof 10.5);
+
+        // string
+        console.log(typeof "helloworld");
+        console.log(typeof 'helloworld');
+        console.log(typeof `helloworld`);
+
+        //Object : {key : value , key : value}
+        //{"name":"홍길동","age":"30","addr":"대구"}
+        console.log(typeof {})
+        console.log(typeof {"name":"홍길동","age":"30","addr":"대구"})
+
+        //null // 변수 초기화(공간형성o + 기본값 삽입 - 개발자가 의도한 값Null)
+        console.log("-------------------");
+        let vol = null;
+        console.log(vol);
+        console.log(typeof vol);
+        console.log("-------------------");
+        //undefined (공간형성o,x but 기본값은 생략 - 개발자가 의도하지 못한 예외)
+        let vol2;   //공간형성시 예외발생하지는 않음
+        console.log(vol2);
+
+        //boolean
+        console.log(typeof true);
+        console.log(typeof false);
+    </script>
+
+</body>
+</html>

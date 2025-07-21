@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./대구맛집.js"></script>
+</head>
+
+<body>
+    <script>
+        console.log("ALL DATA.", 대구맛집);
+        const datas = 대구맛집.data;
+        console.log("datas", datas);
+
+        //한식맛집만 필터링 console.log//
+        let cata = datas.filter((item) => { return item.FD_CS == "한식" });
+        console.log("한식맛집", cata);
+
+        //일식을 필터링 한 다음, 거기서 상호명BZ_NM, 메뉴MNU, 주소GNG_C만 추출하여 새로운 배열로 재구성//
+
+        let maped_10 = datas.filter((item) => { return item.FD_CS == "일식" })
+            .map((item) => {
+                item = { "BZ_NM": item.BZ_NM, "MNU": item.MNU, "GNG_CS ": item.GNG_CS };
+                return item;
+            });
+        console.log(maped_10);
+
+
+
+
+
+    </script>
+</body>
+
+</html>
