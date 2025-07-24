@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //Object 객체 :: 객체를 다루는 기본함수 제공
+        //Object 자료형과는 별개로 미리 만들어진 객체
+
+        console.log("Object", Object);
+        const obj = { "name": "손보금", "age": 28 };
+        console.log("obj", typeof obj);
+        console.log("null", typeof null);
+
+        console.log(Object.keys(obj));//obj의 key를 배열로 반환
+        console.log(Object.values(obj));//obj의 value를 배열로 반환
+        console.log(Object.entries(obj));//열거 가능한 속성 ([key:value])형태의 배열로 반환
+
+
+        //복사하기
+        let obj1 = { name: "손보금" };
+        let odj2 = { gender: "F" };
+
+        console.log(Object.assign(obj, obj1, obj2));
+
+        //Read_Only
+        //freeze함수 : 내용수정불가 + 새속성 추가 불가능
+        // Object.freeze(obj); // 이 함수 넣으면 기존 내용을 수정할 수 없음.
+
+        obj.name = "아리";
+        console.log(obj);
+
+        //새로운 속성을 추가하기
+        obj["key"] = "value";
+        console.log(obj);
+
+        //seal함수 : 기존 내용수정 가능 + 새속성 추가 불가능
+        Object.seal(obj);
+        obj.name = "배가아프다"
+
+        //Object.prototype : 객체가 상속을 구현하는데 사용되는 메커니즘, object객체 내에 구성
+
+        Object.prototype;
+        //프로토타입 함수 정의
+        function Person(name) {
+            this.name = name;
+        }
+        //프로토타입으로 객체 생성
+
+        const person1 = new Person("손보금");
+
+        Person.prototype.toString = function () { return this.name; }
+        Person.prototype.sayHello = function () { console.log("Hello World!!!");}
+       
+        console.log(person1);
+        console.log(person1.toString());
+        person1.sayHello();
+    </script>
+
+</body>
+
+</html>

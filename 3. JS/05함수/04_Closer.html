@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //클로저
+        //클로저는 내부 함수가 외부 함수의 변수에 접근할 수 있는 방법을 의미함
+        //정보 은닉 : 클로저를 사용하여 외부에서 접근할 수 없도록 변수를 보호하고,
+        //함수를 통해서만 접근 가능하도록 제한할 수 있음.
+
+        function outer(){
+            //상태값 보관
+            let state = 0;
+            //내부 함수
+            function addOne(){
+                state++;
+                console.log('state..', state)// 렉시컬 스코프 적용
+                console.dir(addOne);
+
+            }
+            return addOne; //함수이름이 리턴되면 만들어진 함수의 위치정보(함수의 메모리주소)
+        }
+        const clousureFunc = outer();
+        console.log('clousureFunc', clousureFunc);
+        clousureFunc();
+    </script>
+    
+</body>
+</html>

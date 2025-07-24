@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //ECMA 이전
+        //인자o 리턴o
+function sum1(n1, n2){
+    return n1+n2;
+const v1 =sum1(100,200); // 함수를 호출하는 것
+}
+
+
+
+        //인자o 리턴x
+
+        function sum2(n1,n2){
+            console.log('sum2...',n1+n2);
+        }
+        sum2(200,300);
+        //인자x 리턴o
+
+        function sum3(){
+            const n1=111;
+            const n2=222;
+            return n1+n2;
+
+        }
+        //인자x 리턴x
+        function sum4(){
+            const n1 =100;
+            const n2 = 200;
+            console.log("sum4...",n1+n2);
+        }
+
+
+        //ECMA6 이후 ()=>{}
+        const f1 =(n1,n2)=>{return n1+n2;}
+        const f2 =(n1,n2)=>{console.log(n1+n2);}
+        const f3 =()=>{return 100;}
+        const f4 =()=>{}
+
+        f2(100,200);
+
+        //반환값의 갯수: 무조건 1개
+        //인자의 갯수: 메모리 공간이 허용하는 내
+
+        const f5 =(n1,n2, ...args)=>{
+            console.log('n1',n1)
+            console.log('n2',n2)
+            console.log('args',args)
+
+        }
+        f5(100,200,300,400,500,600,700,800);
+    </script>
+</body>
+</html>

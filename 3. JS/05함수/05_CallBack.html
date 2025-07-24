@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function func(n1,n2){
+            consloe.log("func(n1,n2)...call!")
+            return n1+n2;
+        }
+        const v1 = func(10,20);
+        console.log("v1",v1);
+
+        //콜백함수
+        function callBackFunc(n1,n2,logic){
+            console.log('callBackFunc....start...');
+            const v = logic(n1,n2);
+            console.log("v",v);
+            console.log('callBackFunc....start...');
+        }
+    </script>
+</body>
+</html>
