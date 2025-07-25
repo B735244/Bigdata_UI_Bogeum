@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .btn {
+            padding: 10px 10px;
+            margin: 5px;
+            border: 1px solid;
+            border-radius: 5px;
+            transition: .1s;
+            cursor: pointer;
+            min-width: 100px;
+            display: inline-block;
+
+            text-align: center;
+        }
+
+        .btn_style1 {
+            background-color: brown;
+            color: white;
+        }
+
+        .btn_style2 {
+            background-color: navy;
+            color: white;
+        }
+
+        .btn_style3 {
+            background-color: beige;
+            color: white;
+        }
+
+        .btn_style4 {
+            background-color: violet;
+            color: white;
+        }
+
+        .btn_style5 {
+            background-color: rgb(15, 172, 145);
+            color: white;
+        }
+
+        .btn_style6 {
+            background-color: rgb(123, 195, 255);
+            color: white;
+        }
+
+        .btn_style7 {
+            background-color: rgb(47, 0, 77);
+            color: white;
+        }
+
+        .btn_style8 {
+            background-color: rgb(185, 7, 141);
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="btn">구매하기</div>
+    <div class="btn">집에가기</div>
+    <div class="btn">밥먹기</div>
+    <div class="btn">투표하기</div>
+    <div class="btn">잠자기</div>
+    <div class="btn">코드짜기</div>
+    <div class="btn">디저트먹기</div>
+    <div class="btn">게임하기</div>
+
+
+
+    <script>
+        const btnEls = document.querySelectorAll('.btn');
+        btnEls.forEach((btnEl,idx)=>{
+            console.log(idx,btnEl);
+
+            //마우스가 버튼영역안으로 진입했을 때
+            btnEl.addEventListener("mouseover", (e)=>{
+                btnEl.classList.add(`btn_style${idx+1}`);
+
+            })
+
+            //마우스가 버튼영역밖으로 나갔을 때
+             btnEl.addEventListener("mouseleave", (e)=>{
+                 btnEl.classList.remove(`btn_style${idx+1}`)
+             })
+        })
+    </script>
+</body>
+
+</html>

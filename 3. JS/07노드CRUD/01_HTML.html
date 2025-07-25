@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul>
+        <li>1_List</li>
+        <li id="list2">2_List</li>
+        <li class="item">3_List</li>
+        <li>4_List</li>
+        <li id="list5">5_List</li>
+        <li>6_List</li>
+        <li class="item">7_List</li>
+        <li class="item">8_List</li>
+    </ul>
+
+    <script>
+        //노드탐색
+        //id
+        const list2El = document.getElementById('list2');
+        list2El.style.fontSize = '24px';
+        list2El.setAttribute("style", "color : red; background-color:black");
+
+
+
+        //selector/ css 선택자인 '#'을 사용해야한다.
+        const list2El_2 = document.querySelector('#list2');
+        list2El_2.style.width = '200px';
+        const itemEl = document.querySelector('.item');
+        itemEl.style.color = 'green';
+        itemEl.style.fontSize = '2rem';
+
+        const itemEls = document.querySelectorAll('.item');
+        console.log(itemEls)
+        itemEls.forEach((el) => {
+            el.style.fontWeight = "900";
+            el.style.background = "orange";
+        });
+
+        //tagName
+        let liEls = document.getElementsByTagName('li');
+        console.log(liEls);
+        //Arry.from(유사배열) : 유사배열 -> 배열 변환
+        liEls = Array.from(liEls); 
+        console.log(liEls);
+        liEls.forEach((el) => {
+            el.style.fontSize = "4rem";
+            el.style.color = "blue";
+
+
+        })
+    </script>
+</body>
+
+</html>

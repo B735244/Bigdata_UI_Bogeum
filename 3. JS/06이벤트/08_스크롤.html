@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        nav {
+            height: 80px;
+            border-bottom: 1px ;
+            background-color: aqua;
+            transition: .8s;
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+
+        }
+
+        .show {
+            /*nav 보여주기*/
+            height: 80px;
+            background-color: navy;
+        }
+
+        .hide {
+            /*nav 숨기기*/
+            height: 0px;
+        }
+
+        main>section {
+            height: 600px;
+            background-color: rosybrown;
+        }
+    </style>
+</head>
+
+<body style="height: 5000px; margin: 0; padding: 0; width: 8000px;">
+    <div class="wrapper">
+        <header>
+            <div class="top-header"></div>
+            <nav></nav>
+        </header>
+        <main>
+            <section></section>
+        </main>
+        <footer></footer>
+    </div>
+    <script>
+
+        const navEl = document.querySelector('.wrapper nav');
+        let scrollstate = 0;
+        //페이지 성능을 올리면 감도같은거 낮춰줄 필요가 있습니다.
+        document.addEventListener('scroll', () => {
+            //window.scrollY : ViewPort를 기준으로 가장 위쪽 부분의 세로축 위치
+            //어떤 상황에서 쓰는가? : 
+            console.log('scrollY...', window.scrollY);
+            console.log('scrollTop...', document.documentElement.scrollTop);
+            console.log('scrollHeight...', document.documentElement.scrollHeight);//scrollHeight = 문서의 높이만큼 잡힙니다.
+            console.log('scrollX...', window.scrollX);
+            console.log('scrollXHeight...', document.documentElement.scrollX);
+
+
+            //스크롤값이 1000이상인 상태에서 스크롤을위로 올렸을 때 보여줘
+            //상태값을 담기위한 변수 : let scrollstate
+            //상태값은 어제 저장할 지? 끝나고 저장한다.
+            //window.scrollY>= 1000 && scrollstate> window.scrollY
+            //헤더스타일 변경
+       
+
+            
+         if (window.scrollY >= 1000 && scrollstate > window.scrollY) {
+                navEl.classList.remove('hide');
+                navEl.classList.add('show');
+            }
+           else if (window.scrollY >= 30) {
+                navEl.classList.remove('show');
+                navEl.classList.add('hide');
+
+            }
+
+            else {
+                navEl.classList.remove('hide');
+                navEl.classList.add('show');
+
+
+            }
+            scrollstate = window.scrollY;
+        })
+    </script>
+
+</body>
+
+</html>

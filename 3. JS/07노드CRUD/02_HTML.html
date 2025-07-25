@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!------------------------------------------------->
+    <form action="">
+        <input type="text">
+        <input type="text">
+        <input type="checkbox">
+
+    </form>
+
+    <hr />
+
+
+    <!------------------------------------------------->
+    <form action="" name = "joinForm">
+        <input type="text" name="userid">
+        <input type="text" name="password
+        ">
+    </form>
+
+    <hr />
+
+
+    <!------------------------------------------------->
+    <form action="">
+        <input type="text">
+        <input type="text">
+    </form>
+    <hr />
+    <script>
+
+        const formEls = document.forms;
+        console.log(formEls);
+
+        //개별 form 접근(  - index로 접근하기)
+        console.log(formEls[0]);
+        console.log(formEls[1]);
+        console.log(formEls[2]);
+
+        //개별 form 내의 input 접근 (-index 접근하기)
+        formEls[0][0].value = '손보금';
+        formEls[0][1].value = '보동이보고싶다';
+        
+        formEls[0][2].checked = true;
+        //★개별 form 내의 input 접근 ( - 이름으로 접근하기)★
+
+        const joinForm = document.joinForm;
+        joinForm.userid.value = '손보동';
+        joinForm.password.value = '손보동';
+    </script>
+
+</body>
+
+</html>
