@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body style="display: flex; justify-content: center; align-items: center; height: 100vh;">
+    <div style="width: 500px; height: 500px;">
+        <canvas id="myChart"></canvas>
+    </div>
+
+
+
+
+    <script>
+
+
+
+        const ctx = document.getElementById('myChart');
+        const dataSet = [
+            {
+                label: 'Red',
+                data: [12, 0, 0, 0, 0, 0],
+                borderWidth: 1,
+                backgroundColor: 'red',
+                borderColor: '',
+
+            },
+            {
+                label: 'Orange',
+                data: [0, 33, 0, 0, 0, 0],
+                borderWidth: 1,
+                backgroundColor: 'orange',
+                borderColor: '',
+            },
+            {
+                label: 'Yellow',
+                data: [0, 0, 55, 0, 0, 0],
+                borderWidth: 1,
+                backgroundColor: 'yellow',
+                borderColor: '',
+            },
+            {
+                label: 'Green',
+                data: [0, 0, 0, 66, 0, 0],
+                borderWidth: 1,
+                backgroundColor: 'green',
+                borderColor: '',
+            },
+            {
+                label: 'blue',
+                data: [0, 0, 0, 0, 46, 0],
+                borderWidth: 1,
+                backgroundColor: 'blue',
+                borderColor: '',
+            },
+            {
+                label: 'navy',
+                data: [0, 0, 0, 0, 0, 42],
+                borderWidth: 1,
+                backgroundColor: 'navy',
+                borderColor: '',
+
+            }
+        ]
+        const option = {
+            scales: {
+                x: {
+                    stacked: true,
+                  
+                },
+                y: {
+                    beginAtZero: true,
+                    max:100,
+                    min:0,
+                },
+            }
+        }
+        new Chart(ctx, {
+            type: 'bar',//bar, line, pie, dougnut, bubble, scatter, heatmap...
+            data: {
+                labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                datasets: dataSet,
+            },
+            options: option,
+
+
+        });
+    </script>
+
+</body>
+
+</html>

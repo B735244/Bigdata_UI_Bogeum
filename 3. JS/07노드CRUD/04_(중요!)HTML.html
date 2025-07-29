@@ -93,9 +93,22 @@
             //이벤트처리
             insertbtnEl.addEventListener('click', () => {
                 const text = insertbtnEl.value;
+                if (!isValid(text))
+                    return;// 유효하지 않다면 그냥 나가버리세요.라는 말이겠죠?
+
+
                 //container에 item을 생성해서 추가
                 createNode(text);
                 insertbtnEl.value = "";
+
+                insertE1.addEventListener('keydown', (e) => {
+                    if (e.keyCode == 13) {
+                        const text = insertE1.value;
+                        if (!isValid(text))
+                            return;
+                    }
+                })
+
 
 
 
@@ -124,12 +137,17 @@
                 spanEl.className = 'material-symbols-outlined';
                 //속성 추가
                 inputEl.setAttribute('readonly', true);
-
+                aEl.setAttribute('href', 'javascript:void(0)');
 
                 //데이터 삽입
                 spanEl.innerHTML = 'delete';
                 inputEl.value = text;
 
+                //이벤트 추가
+                aEl.addEventListener('click', (e) => {
+                    const itemEl = e.target.parentNode.parentNode.parentNode;
+                    itemEl.remove();
+                });
 
                 //노드 간 연결
                 leftEl.appendChild(inputEl);
@@ -143,8 +161,21 @@
                 containerEl.appendChild(itemEl)
 
 
-                //
+                //유효성 검증 함수
+                function isValid(text) {
+                    const regex = /^[0-9]/;
+                    //공백여부 확인 .trim은 앞 뒤 공백 제거하는 함수
+                    if (text.trim() === ' ' || text.trim() === null) {
+                        alert("내용을 입력하세요");
+                        return false;
+                    }
+                    return true;
+                }
+                if (regex.test(text)) {
+                    alert("첫번째는 숫자를 입력할 수 없습니다.");
+                    return false;
 
+                }
             }
         })
 

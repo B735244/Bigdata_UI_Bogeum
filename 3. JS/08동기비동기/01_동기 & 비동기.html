@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+
+        for (let i = 0; i < 10; i++) {
+            console.log("main thread... for _1..", i);
+
+        }
+        console.log("for_1 종료..!!!");
+        //바동기 처리(스레드 분할 처리합니다 - )
+        setTimeout(() => {
+            for (let i = 0; i < 10; i++) {
+                console.log("main thread... for _2..", i);
+
+            }
+            console.log("for_2 종료..!!!");
+        
+        }, 5);
+
+
+        for (let i = 0; i < 10; i++) {
+            console.log("main thread... for _3..", i);
+
+            
+        }
+        console.log("for_3 종료..!!!");
+        
+    </script>
+</body>
+
+</html>

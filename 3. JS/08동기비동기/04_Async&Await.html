@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 1280px;
+            height: 800px;
+            border: 1px solid;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .box>.main-thread {
+            width: 300px;
+            border: 1px solid;
+            height: 100%;
+        }
+
+        .box>.sub1-thread {
+            width: 300px;
+            border: 1px solid;
+            height: 100%;
+        }
+
+        .box>.sub2-thread {
+            width: 300px;
+            border: 1px solid;
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class="main-thread"></div>
+        <div class="sub1-thread"></div>
+        <div class="sub2-thread"></div>
+    </div>
+
+    <script>
+        const mainThreadEl = document.querySelector('.main-thread');
+        const sub1ThreadEl = document.querySelector('.sub1-thread');
+        const sub2ThreadEl = document.querySelector('.sub2-thread');
+        //Promise 비동기 처리 객체 확인해보기
+        // new Promise((reslove,reject)=>{
+
+        //  setTimeout(()=>{
+        //      const success =true;
+
+        //      if(success){
+        //         reslove("요청 성공 : 서버로부터 데이터 수신완료!!!");
+
+        //      }
+
+
+        //      else{
+        // reject("요청 실패 : 서버 오류 (404)");
+        //      }
+        //  },3000);
+        // })
+        // .then((response)=>{
+        //     console.log(response);
+        // })//정상처리 시 후속 처리
+        // .catch((error)=>{
+        //     console.log(error);
+        // })//오류 발생 시 후속 처리
+
+        //main Thread 생성
+        let cnt = 0;
+        setInterval(() => {
+            mainThreadEl.innerHTML += `Main Thread ... ${++cnt}<br/>`;
+        }, 1000)
+
+        //비동기 기본 함수
+        function sub_process_executor(val) {
+            return new Promise((reslove, reject) => {
+                setTimeout(() => {
+                    reslove(val);
+                }, 3000)
+            });
+        }
+
+        //1.  Async/ Await 없이 비동기 처리 진행
+        // sub_process_executor(1)
+        // .then((response)=>{
+        //     console.log('sub..val_1',response);
+        //     sub1ThreadEl.innerHTML = `sub1 ...${response}`
+        // })
+        // .catch((error)=>{})
+
+
+
+        // sub_process_executor(2)
+        // .then((response)=>{
+        //     console.log('sub..val_1',response);
+        //      sub2ThreadEl.innerHTML = `sub2 ...${response}`
+        // })
+        // .catch((error)=>{})
+
+        //2.  Async/ Await 를 사용한 비동기 처리 진행
+        async function sub_process_order() {
+            await sub_process_executor(2)
+                .then((response) => {
+                    console.log('sub..val_1', response);
+                    sub2ThreadEl.innerHTML = `sub1 ...${response}`
+                })
+                .catch((error) => { })
+
+
+
+            await sub_process_executor(1)
+                .then((response) => {
+                    console.log('sub..val_1', response);
+                    sub1ThreadEl.innerHTML = `sub2 ...${response}`
+                })
+                .catch((error) => { })
+
+
+        }
+        sub_process_order();
+
+
+
+    </script>
+</body>
+
+</html>
