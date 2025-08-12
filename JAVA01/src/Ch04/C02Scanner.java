@@ -3,29 +3,27 @@ package Ch04;
 import java.util.Scanner;
 
 public class C02Scanner {
-
+	
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-Scanner sc = new Scanner(System.in);
 
-System.out.print("정수입력:");
-int num1 = sc.nextInt();
-System.out.println("입력된 정수 값 : "+num1);
-
-System.out.print("실수입력:");
-double num2 = sc.nextInt();
-System.out.println("입력된 정수 값 : "+num2);
-
-System.out.print("문자열 입력:");
-//String str1 = sc.nextInt();// 문자열 입력받기 기능 함수, 띄어쓰기
-//System.out.println("입력된 정수 값 : "+str1);
-sc.nextLine();
-String str1 = sc.nextLine();
-System.out.println("입력된 문자열: "+(int)str1.charAt(0));
-
-sc.close();
-
-
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.print("정수 입력 :");
+		int num1 = sc.nextInt();
+		System.out.println("입력된 정수 값 : "+num1);
+		
+		System.out.print("실수 입력 :");
+		double num2 = sc.nextDouble();
+		System.out.println("입력된 실수 값 : "+num2);
+		
+		System.out.print("문자열 입력 :");
+//		String str1 = sc.next();		//문자열입력받기기능함수,띄어쓰기는 포함하지않는다
+		sc.nextLine();
+		String str1 = sc.nextLine();	//문자열입력받기기능함수,띄어쓰기는 포함 
+		System.out.println("입력된 문자열 : "+str1);
+		
+		sc.close();
+		
 	}
-
+	
 }
