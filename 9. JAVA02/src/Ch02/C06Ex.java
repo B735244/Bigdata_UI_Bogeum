@@ -103,7 +103,8 @@ class Profile {
 	// 4)
 	boolean isEquals(String str) {
 		// all로 받은 문자열을 , 단위로 잘라내어(split(",")) 각각 나눠진 문자열이
-		// "name,addr,job,major" 와 일치 하면 true
+		// "name,addr,job,major" 와 일치 하면 true =>== → 두 참조 변수가 **같은 객체(주소)**를 가리키는지 비교
+//equals() → 두 객체의 **내용(문자열 값)**이 같은지 비교
 		// 아니면 false 를 리턴
 		String[] str1 = str.split(",");
 		if (str1[0].equals(this.name) && str1[1].equals(this.addr) && str1[2].equals(this.job)
@@ -115,15 +116,17 @@ class Profile {
 
 	}
 }
+
 public class C06Ex {
 
 	public static void main(String[] args) {
 		Profile hong = new Profile("홍길동,대구,프로그래머,컴퓨터공학");
+
 		System.out.println(hong.toString());
-		System.out.println("길동 포함여부 : " + hong.isContain("길동"));	//true
-		System.out.println("컴퓨터 포함여부 : " + hong.isContain("컴퓨터"));	//true
-		System.out.println("프로필 일치여부 : " + hong.isEquals("홍길동,대구,프로그래머,컴퓨터공학"));//false
-		System.out.println("프로필 일치여부 : " + hong.isEquals("홍길동,울산,프로그래머,컴퓨터공학"));//false
+		System.out.println("길동 포함여부 : " + hong.isContain("길동")); // true
+		System.out.println("컴퓨터 포함여부 : " + hong.isContain("컴퓨터")); // true
+		System.out.println("프로필 일치여부 : " + hong.isEquals("홍길동,대구,프로그래머,컴퓨터공학"));// false
+		System.out.println("프로필 일치여부 : " + hong.isEquals("홍길동,울산,프로그래머,컴퓨터공학"));// false
 	}
 
 }
