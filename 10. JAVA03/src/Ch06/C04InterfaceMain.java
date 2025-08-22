@@ -1,0 +1,61 @@
+package Ch06;
+
+//-----------------------------Interface 영역---------------------------------
+interface Tire {
+	void run();
+}
+
+//----------------------------Interface 구현영역------------------------------
+class Korea implements Tire {
+
+	@Override
+	public void run() {
+		System.out.println("한국타이어가 굴러갑니다.");
+
+	}
+
+}
+
+class GeumHo implements Tire {
+
+	@Override
+	public void run() {
+		System.out.println("금호타이어가 굴러갑니다.");
+	}
+}
+//----------------------------Interface 구현영역----------------------------------
+class Car {
+	Tire FL;
+	Tire FR;
+	Tire BL;
+	Tire BR;
+
+	Car() {
+
+		FL = new Korea();
+		FR = new Korea();
+		BL = new Korea();
+		BR = new Korea();
+
+	}
+	void start() {
+		FL.run();
+		FR.run();
+		BL.run();
+		BR.run();
+	}
+}
+
+
+public class C04InterfaceMain {
+
+	public static void main(String[] args) {
+		Car car = new Car();
+		
+		car.FL = new GeumHo();
+		car.BR =new GeumHo();
+		car.start();
+
+	}
+
+}
