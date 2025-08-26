@@ -1,17 +1,13 @@
 package Ch04;
 
-import java.util.ArrayList;//동적할당이 가능함/
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Vector;
 
 public class C01ListMain {
 	
 	public static void main(String[] args) {
 		
 		List<String> list = new ArrayList();
-//		List<String> list = new LinkedList();
-//		List<String> list = new Vector();
 		//추가
 		list.add("HTML/CSS/JS");
 		list.add("NODEJS");

@@ -1,35 +1,31 @@
 package Ch03;
-class 맛{// 맛이라는 클래스를 하나 만들고 그 안에 무슨 맛인지 사용할 맛들을 extends로 상속받아줍니다.
+
+abstract class 팝콘재료{
 	
 }
 
-class 캬라멜 extends 맛{
+class 캬라멜 extends 팝콘재료{
 
 	@Override
 	public String toString() {
-		return "캬라멜";
+		return "캬라멜맛";
 	}
-	
 }
-class 버터옥수수 extends 맛 {
-
+class 버터옥수수 extends 팝콘재료{
 	@Override
 	public String toString() {
-		return "버터옥수수";
-	}
-	
+		return "옥수수맛";
+	}	
 }
-class PopCorn<T>{
-	private T 맛;
-	public PopCorn(T 맛) {
-		this.맛 = 맛;
-		
+class PopCorn<T extends 팝콘재료>{
+	T 재료 ;
+	public PopCorn(T 재료) {
+		this.재료 = 재료;
 	}
 	@Override
 	public String toString() {
-		return "PopCorn [맛=" + 맛 + "]";
+		return "PopCorn [재료=" + 재료 + "]";
 	}
-	
 }
 public class C02Ex {
 

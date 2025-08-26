@@ -18,8 +18,8 @@ class Person{
 		this.name = name;
 		this.age = age;
 	}
-//	
-////	//equals를 재정의해서 name,age가 동일하면 true / 아니면 false 
+	
+	//equals를 재정의해서 name,age가 동일하면 true / 아니면 false 
 	@Override
 	public boolean equals(Object obj) {
 		if(obj instanceof Person) {
@@ -33,7 +33,7 @@ class Person{
 	public int hashCode() {
 		return Objects.hash(this.name,this.age);
 	}
-//	
+	
 	
 }
 public class C05SetMain {
