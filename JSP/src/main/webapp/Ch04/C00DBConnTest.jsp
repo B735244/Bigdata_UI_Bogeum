@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-<%@ page import="java.sql.*, java.util.*,C04.*"%>
+<%@ page import="java.sql.*, java.util.*,Ch04.*"%>
 <%
 //DB CONN DATA
 String id = "root";

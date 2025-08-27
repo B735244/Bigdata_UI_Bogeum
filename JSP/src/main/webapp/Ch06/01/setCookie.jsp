@@ -13,12 +13,13 @@
 
 <%
 Cookie cookie1 = new Cookie("cookie1", "value1");
+cookie1.setPath("/");
 //쿠키는 response 내장객체를 통해서 던져진다
 //쿠키의 유지기간(기본값:-1 -> 파일생성X, 브라우저가 종료될 떄까지 cookie 유지)
 //-------------------------------------------------
-Cookie cookie2 = new Cookie("cookie2", "value1");//cookie2 은 유지기간 설정
+Cookie cookie2 = new Cookie("cookie2", "value2");//cookie2 은 유지기간 설정
 cookie2.setMaxAge(60 * 5);//5분 유지
-cookie2.setPath("./cookie.txt");
+cookie2.setPath("/");
 //-------------------------------------------------
 response.addCookie(cookie1);
 response.addCookie(cookie2);//cookie2 은 유지기간 설정
