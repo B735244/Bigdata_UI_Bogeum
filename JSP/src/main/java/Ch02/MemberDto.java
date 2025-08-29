@@ -1,4 +1,4 @@
-package Ch04;
+package Ch02;
 
 
 public class MemberDto {
@@ -20,8 +20,7 @@ public class MemberDto {
 	private String month;
 	private String day;
 	
-	//디폴트생성자
-	//모든인자생성자
+	
 	//Getter and Setter
 	//toString
 	
