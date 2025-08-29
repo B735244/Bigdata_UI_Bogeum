@@ -34,9 +34,9 @@ response.setContentType("text/html; charset=UTF-8");
 			return false;
 		}
 
-		String pattern = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[\\W_]).{8,16}$";
+		String pattern = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[\\W_]).{8,20}$";
 		if (!pw.matches(pattern)) {
-			System.out.println("Password는 영문, 숫자, 특수문자를 포함한 8~16자리여야 합니다.");
+			System.out.println("Password는 영문, 숫자, 특수문자를 포함한 8~20자리여야 합니다.");
 			return false;
 		}
 		
