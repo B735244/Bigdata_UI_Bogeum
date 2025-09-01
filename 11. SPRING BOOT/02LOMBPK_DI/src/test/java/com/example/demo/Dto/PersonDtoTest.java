@@ -11,4 +11,12 @@ class PersonDtoTest {
         PersonDto dto = new PersonDto("손보금",28,"진주");
         System.out.println(dto);
 }
+@Test
+public void t2(){
+PersonDto dto = PersonDto.builder()
+        .age(20)
+        .name("보동")
+        .build();
+System.out.println(dto);
+}
 }
