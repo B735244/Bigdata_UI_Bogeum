@@ -1,22 +1,19 @@
-package com.example.demo.Domain.Common.Service;
+//package com.example.demo.Domain.Common.Service;
+//
+//import org.junit.jupiter.api.Test;
+//import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.boot.test.context.SpringBootTest;
+//
+//@SpringBootTest
+//class MemoServiceTest {
+//    @Autowired
+//    private MemoService memoService;
+//
+//    @Test
+//    public void t1() throws Exception {
 
-import com.example.demo.Domain.Common.Dto.MemoDto;
-import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-
-import java.time.LocalDateTime;
-
-@SpringBootTest
-class MemoServiceTest {
-    @Autowired
-    private MemoService memoService;
-
-    @Test
-    public void t1() throws Exception {
-
-        MemoDto dto = new MemoDto(11L, "", "a@naver.com", LocalDateTime.now(), null);
-        memoService.memoRegistration(dto);
-    }
-
-}
+//        MemoDto dto = new MemoDto(11L, "", "a@naver.com", LocalDateTime.now(), null);
+//        memoService.memoRegistration(dto);
+//    }
+//
+//}

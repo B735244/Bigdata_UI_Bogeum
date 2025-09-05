@@ -1,17 +1,20 @@
-package com.example.demo.Domain.Common.Dao;
+package com.example.demo.Domain.Common.Service;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 @SpringBootTest
-class MemoDaoTest {
+class TxTestServiceTest {
     @Autowired
-    private MemoDao memoDao;
+    private TxTestService txTestService;
 
     @Test
     public void t1() throws Exception{
-     //   memoDao.insert(new MemoDto(10L,"내용","user@naver.com", LocalDateTime.now(),null));
+//        txTestService.addMemo();
+        txTestService.addMemoTx();
     }
 
 }

@@ -14,17 +14,13 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-
 public class Memo {
-    @Id//Id가 primary키로 지정될려면 @Id 해주면 됩니다.
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(length = 1024)
+    @Column(length=1024)
     private String text;
-    @Column(length = 100, nullable = false)
+    @Column(length=100,nullable = false)
     private String writer;
     private LocalDateTime createAt;
-
-
-
 }

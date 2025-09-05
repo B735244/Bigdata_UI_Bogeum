@@ -18,10 +18,10 @@ public class MemoDao {
 
     public int insert(MemoDto dto) throws SQLException {
         Connection conn = dataSource3.getConnection();
-        PreparedStatement pstmt = conn.prepareStatement("insert into tbl_memo values(1,?,?,now())"); //4개 인자 던진다
+        PreparedStatement pstmt = conn.prepareStatement("insert into tbl_memo values(1,now(),?,?)"); //4개 인자 던진다
        // pstmt.setLong(1, null);
-        pstmt.setString(2, dto.getText());
-        pstmt.setString(3, dto.getWriter());
+        pstmt.setString(3, dto.getText());
+        pstmt.setString(4, dto.getWriter());
         //pstmt.setString(4, dto.getCreateAt().toString());
         int result = pstmt.executeUpdate();
         return result;
