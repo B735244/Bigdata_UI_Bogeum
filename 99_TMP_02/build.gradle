@@ -1,0 +1,70 @@
+plugins {
+	id 'java'
+	id 'war'
+	id 'org.springframework.boot' version '3.4.5'
+	id 'io.spring.dependency-management' version '1.1.7'
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(21)
+	}
+}
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+    // Spring Boot -> Spring MVC(모델뷰컨트롤러), Tomcat, JSON
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	// Lombok 라이브러리 사용(toString, getter/setter, builder등 자동 생성
+    compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+	//providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
+	// Junit, Mockito, AssertJ 등 테스트 라이브러리 모음
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	//Junit 실행을 위한 런처 (테스트 실행 환경 지원)
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+
+	//JSP
+    //JSP컴파일러, JSP 뷰를 사용하기 위해 반드시 필요
+	implementation 'org.apache.tomcat.embed:tomcat-embed-jasper' // 추가
+
+	//JSTL
+    //Servlet 표준 API, JSTL API, JSTL 구현체(실제 작동 코드)
+	implementation 'jakarta.servlet:jakarta.servlet-api' //스프링부트 3.0 이상
+	implementation 'jakarta.servlet.jsp.jstl:jakarta.servlet.jsp.jstl-api' //스프링부트 3.0 이상
+	implementation 'org.glassfish.web:jakarta.servlet.jsp.jstl' //스프링부트 3.0 이상
+
+	// VALIDATION - ADD
+    //@NotNull, @Size, @Email 등 DTO 검증
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+	//DATABASE - ADD
+    //JDBC 관련 기본 설정(DataSource, JDBC Template 제공)
+    implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+    //Mysql JDBC 드라이버 -> DB연결에 사용
+    runtimeOnly 'com.mysql:mysql-connector-j'
+
+    // https://mvnrepository.com/artifact/org.apache.commons/commons-dbcp2
+    //커넥션 풀 직접 설정할 때 필요
+    implementation 'org.apache.commons:commons-dbcp2:2.13.0'
+
+    //JPA - ADD
+    //Spring Data JPA(Hibernate 포함)
+    //엔티티 Mapping, Repository 인터페이스로 DB접근 가능하게 함
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
