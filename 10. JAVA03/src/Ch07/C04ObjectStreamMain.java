@@ -1,11 +1,13 @@
 package Ch07;
 
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.Date;
 
-class Board implements Serializable{
+class Board implements Serializable{//직렬화를 꼭 상속관계로 해주어야 한다.
 	
 	private static final long serialVersionUID = 1L;
 	
@@ -70,16 +72,16 @@ public class C04ObjectStreamMain {
 	
 	public static void main(String[] args) throws Exception{
 		
-//		FileOutputStream out = new FileOutputStream("c:\\IOTEST\\board.db");
-//		ObjectOutputStream oout = new ObjectOutputStream(out);
-//		oout.writeObject(new Board(1,"제목1","하2","홍길동",new Date()));;
-//		oout.writeObject(new Board(2,"제목2","하3","남길동",new Date()));;
-//		oout.flush();
-//		oout.close();
-//		out.close();
+		FileOutputStream out = new FileOutputStream("c:\\iotest\\board.db");
+		ObjectOutputStream oout = new ObjectOutputStream(out);
+		oout.writeObject(new Board(1,"제목1","하2","홍길동",new Date()));;
+		oout.writeObject(new Board(2,"제목2","하3","남길동",new Date()));;
+		oout.flush();
+		oout.close();
+		out.close();
 		
-		//
-		FileInputStream in = new FileInputStream("c:\\IOTEST\\board.db");
+		
+		FileInputStream in = new FileInputStream("c:\\iotest\\board.db");
 		ObjectInputStream oin = new ObjectInputStream(in);
 
  		Object obj =  oin.readObject();

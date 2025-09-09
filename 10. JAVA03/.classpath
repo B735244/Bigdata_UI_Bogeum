@@ -6,12 +6,13 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="Drivers"/>
 	<classpathentry kind="lib" path="src/Ch08/mysql-connector-j-9.4.0.jar"/>
-	<classpathentry kind="lib" path="src/Ch06/jsoup-1.21.2.jar"/>
-	<classpathentry kind="lib" path="src/Ch06/selenium-server-4.35.0.jar"/>
-	<classpathentry kind="lib" path="src/Ch06/jackson-annotations-2.19.2.jar"/>
-	<classpathentry kind="lib" path="src/Ch06/jackson-core-2.19.2.jar"/>
-	<classpathentry kind="lib" path="src/Ch06/jackson-databind-2.19.2.jar"/>
-	<classpathentry kind="lib" path="src/Ch06/jackson-datatype-jsr310-2.19.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Administrator/Desktop/새 폴더/10_JAVA/JAVA03/src/Ch06/jsoup-1.21.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Administrator/Desktop/새 폴더/10_JAVA/JAVA03/src/Ch06/selenium-server-4.35.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Administrator/Desktop/새 폴더/10_JAVA/JAVA03/src/Ch06/jackson-annotations-2.19.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Administrator/Desktop/새 폴더/10_JAVA/JAVA03/src/Ch06/jackson-core-2.19.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Administrator/Desktop/새 폴더/10_JAVA/JAVA03/src/Ch06/jackson-databind-2.19.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Administrator/Desktop/새 폴더/10_JAVA/JAVA03/src/Ch06/jackson-datatype-jsr310-2.19.2.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

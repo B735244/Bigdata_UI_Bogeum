@@ -101,7 +101,7 @@ class C08GUI extends JFrame implements ActionListener, KeyListener, MouseListene
 			fileChooser.setDialogTitle("파일 저장 위치를 선택하세요");
 			fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
 			
-			File defaultDirPath = new File("C:\\IOTEST");
+			File defaultDirPath = new File("C:\\iotest");
 			if(defaultDirPath.exists())
 				fileChooser.setCurrentDirectory(defaultDirPath);
 			
@@ -143,7 +143,7 @@ class C08GUI extends JFrame implements ActionListener, KeyListener, MouseListene
 			fileChooser.setDialogTitle("파일을 선택하세요");
 			fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
 		 
-			File defaultDirPath = new File("C:\\IOTEST");
+			File defaultDirPath = new File("C:\\iotest");
 			if(defaultDirPath.exists())
 				fileChooser.setCurrentDirectory(defaultDirPath);
 			

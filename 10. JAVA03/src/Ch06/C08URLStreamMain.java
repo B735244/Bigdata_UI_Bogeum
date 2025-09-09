@@ -12,28 +12,29 @@ import java.net.URL;
 public class C08URLStreamMain {
 
 	public static void main(String[] args) throws Exception {
+	URL url = (new URI("https://n.news.naver.com/mnews/article/082/0001341915?sid=102")).toURL();
+InputStream input = url.openStream();
+
+//보조스트림추가
+BufferedInputStream buffIn =  new BufferedInputStream(input);
+Reader rdinput = new InputStreamReader(buffIn);//byte -> char 변환시켜줌
+Writer fout = new FileWriter("c:\\iotest\\index.html");
+	while(true) {
+		int data = rdinput.read();
+		if(data==-1) {
+			break;
+			
 		
-		URL url = (new URI("https://n.news.naver.com/mnews/article/016/0002520127")).toURL();
-		InputStream in = url.openStream();
 		
-		//보조스트림 추가
-		BufferedInputStream buffIn = new BufferedInputStream(in);	//보조스트림(버퍼공간)추가
-		Reader rin = new InputStreamReader(buffIn);	//byte->char 변환 
-		
-		Writer fout = new FileWriter("c:\\IOTEST\\index.html");
-		
-		while(true) {
-			int data = rin.read();
-			if(data==-1)
-				break;
-//			System.out.print((char)data);
-			fout.write((char)data);
-			fout.flush();
 		}
-		fout.close();
-		rin.close();
-		buffIn.close();
-		in.close();
+//		System.out.print((char)data);	
+		fout.write((char)data);
+		fout.flush();
+	}
+	fout.close();
+	rdinput.close();
+	buffIn.close();
+	input.close();
 	}
 
 }
