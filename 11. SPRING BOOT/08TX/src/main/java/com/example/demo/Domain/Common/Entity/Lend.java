@@ -18,7 +18,7 @@ public class Lend {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(
             name="username",
             foreignKey = @ForeignKey(
@@ -28,7 +28,7 @@ public class Lend {
     )
     private User user;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(
             name="bookCode",
             foreignKey = @ForeignKey(
