@@ -52,6 +52,10 @@ dependencies {
     runtimeOnly 'com.mysql:mysql-connector-j'
     // https://mvnrepository.com/artifact/org.apache.commons/commons-dbcp2
     implementation 'org.apache.commons:commons-dbcp2:2.13.0'
+//Mybatis
+    implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.5'
+    testImplementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter-test:3.0.5'
+    implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.3'
 
 }
 
