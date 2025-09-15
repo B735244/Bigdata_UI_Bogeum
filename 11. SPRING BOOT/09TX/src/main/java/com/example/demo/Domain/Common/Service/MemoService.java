@@ -5,7 +5,7 @@ import com.example.demo.Domain.Common.Dto.MemoDto;
 import com.example.demo.Domain.Common.Dto.PageDto;
 import com.example.demo.Domain.Common.Entity.Memo;
 import com.example.demo.Domain.Common.Repository.MemoRepository;
-import org.junit.jupiter.api.BeforeEach;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
