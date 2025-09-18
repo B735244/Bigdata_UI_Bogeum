@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const xhr = new XMLHttpRequest;
+        console.log(xhr);
+        xhr.open("GET","http://192.168.5.4:8099/api/items");
+        xhr.setRequestHeader("Content-Type", "application/json");
+        xhr.onload=()=>{console.log("정상응답입니다:", xhr.responseText);} // 정상응답
+        xhr.onerror=()=>{console.log("비정상응답입니다!! 요청실패!!!:", xhr.responseText);} // 비정상응답
+        // -> 요청이 정상/비정상 처리되었는지 알려주고 이제 값을 넘겨줍니다.
+        xhr.send(JSON.stringify({name: "손보금",price:1000}));
+
+        function get_item(id){}
+        function post_item(item){}
+        function put_item(item){}
+        function petch_item(item){}
+        function delete_item(id){}
+
+    </script>
+</body>
+</html>
