@@ -13,7 +13,6 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.util.ArrayList;
-import java.util.List;
 
 //Bus노선
 @RestController
@@ -61,44 +60,12 @@ private String routeNo;
        System.out.println(response.getBody());
 
        //확인
-// Root 꺼내기
        Root root = response.getBody();
-       if (root == null) {
-           System.out.println("[ERROR] Root가 null입니다. 응답을 확인하세요.");
-           return;
-       }
-
-// Body 꺼내기
        Body body = root.getBody();
-       if (body == null) {
-           System.out.println("[ERROR] Body가 null입니다. 구조를 확인하세요.");
-           return;
-       }
-
-// items 꺼내기
-       List<Item> items = body.getItems();
-       if (items == null || items.isEmpty()) {
-           System.out.println("[WARN] items가 비어있습니다.");
-           return;
-       }
-
-// 리스트 순회
-       items.forEach(item -> {
-           System.out.println("노선번호: " + item.getRouteNo());
-
-           // arrList 꺼내기
-           List<ArrList> arrLists = item.getArrList();
-           if (arrLists == null || arrLists.isEmpty()) {
-               System.out.println("  [WARN] 이 노선의 도착 정보가 없습니다.");
-           } else {
-               arrLists.forEach(arr -> {
-                   System.out.println("  정류장: " + arr.getBsNm()
-                           + " | 남은 정류장: " + arr.getBsGap()
-                           + " | 남은 시간(초): " + arr.getArrTime());
-               });
-           }
+       ArrayList<Item> items =  body.getItems();
+       items.forEach((item)->{
+           System.out.println(item);
        });
-
 
    }
     @Data

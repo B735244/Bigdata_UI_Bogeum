@@ -1,9 +1,16 @@
 package com.example.demo.Restful.Opendata;
 
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.HttpMessageConverter;
+import org.springframework.http.converter.xml.Jaxb2RootElementHttpMessageConverter;
+import org.springframework.http.converter.xml.MappingJackson2XmlHttpMessageConverter;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -78,20 +85,38 @@ public class OpenData02Controller {
 //
 //        HttpEntity<MultiValueMap<String, String>> entity = new HttpEntity<>(params, header);
 //        //4. 요청 후 응답 확인하기
-//        //URL,요청Method,entity,반환값 받아낼 자료형
-        ResponseEntity<Root> response= restTemplate.exchange(url, HttpMethod.GET,null,Root.class);
+//
+//
+//URL,요청Method,entity,반환값 받아낼 자료형
+        // 데이터 타입이 JSON이면 실행
+        if(dataType.equals("JSON")) {
+            ResponseEntity<Root> response = restTemplate.exchange(url, HttpMethod.GET, null, Root.class);
 //REST TYPE -> Class Type 변환
-        System.out.println(response.getBody());
+            System.out.println(response.getBody());
 //
 //        //확인
-        Root root = response.getBody();
-        Response resp =root.getResponse();
-        Body body = resp.getBody();
-        Items items = body.getItems();
-        List<Item> list = items.getItem();
-        list.forEach(System.out::println);
+            Root root = response.getBody();
+            Response resp = root.getResponse();
+            Body body = resp.getBody();
+            Items items = body.getItems();
+            List<Item> list = items.getItem();
+            list.forEach(System.out::println);
+        }
+        // 데이터 타입이 JSON이 아닌 다른(XML)일 때 실행
+        else{
+            // 1) 기존 컨버터 중 Jackson(XML) 제거
+            // 1) 기존 컨버터 중 Jackson(XML) 제거
+            restTemplate.getMessageConverters().removeIf(c -> c instanceof MappingJackson2XmlHttpMessageConverter);
 
+            // 2) JAXB 컨버터를 최우선으로 추가
+            List<HttpMessageConverter<?>> converters = new ArrayList<>(restTemplate.getMessageConverters());
+            converters.add(0, new Jaxb2RootElementHttpMessageConverter());
 
+            restTemplate.setMessageConverters(converters);
+
+            ResponseEntity<XMLresponse> response =  restTemplate.exchange(url, HttpMethod.GET, null, XMLresponse.class);
+            System.out.println(response.getBody());
+        }
 
 //        model.addAttribute("list",list);
 //        return "th/Opendata/index2";
@@ -103,6 +128,9 @@ public class OpenData02Controller {
 // import com.fasterxml.jackson.annotation.JsonProperty; // version 2.11.1
 /* ObjectMapper om = new ObjectMapper();
 Root root = om.readValue(myJsonString, Root.class); */
+    //------------------------------
+    // -- JSON
+    // ------------------------
     @Data
     private static class Body{
         public String dataType;
@@ -138,6 +166,61 @@ Root root = om.readValue(myJsonString, Root.class); */
     private static class Root{
         public Response response;
     }
+    //-------------------------------------------
+    //XML
+    //---------------------------------------
 
+    @XmlRootElement(name="response")
+    @Data
+    @XmlAccessorType(XmlAccessType.FIELD) // 이걸 어떻게 해석할거냐? 라는 어노테이션입니다.
+    private static class XMLresponse {
 
+        @XmlElement(name="header")
+        public Header header;
+        public Body body;
+        //XMLrespose안에 body와 header를 클래스로 넣어줍니다.
+        //구조가 response->(header,body)->items->item 이기 대문에
+
+        // response -> (header, body)
+        @Data
+        @XmlRootElement(name="header")
+        @XmlAccessorType(XmlAccessType.FIELD)
+        private static class Header {
+            public int resultCode;
+            public String resultMsg;
+        }
+
+        // response -> (header, body)
+        @Data
+        @XmlRootElement(name = "body")
+        @XmlAccessorType(XmlAccessType.FIELD)
+        private static class Body {
+            public String dataType;
+            public Items items;
+            public int numOfRows;
+            public int pageNo;
+            public int totalCount;
+
+            // body -> items
+            @Data
+            @XmlRootElement(name = "items")
+            @XmlAccessorType(XmlAccessType.FIELD)
+            private static class Items {
+                public List<Item> item;
+                //items -> item
+
+                @Data
+                @XmlRootElement(name = "item")
+                @XmlAccessorType(XmlAccessType.FIELD)
+                private static class Item {
+                    public int baseDate;
+                    public int baseTime;
+                    public String category;
+                    public int nx;
+                    public int ny;
+                    public int obsrValue;
+                }
+            }
+        }
+    }
 }

@@ -33,7 +33,7 @@ dependencies {
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 
 
-//REST LIB
+    //REST LIB
     implementation 'com.fasterxml.jackson.core:jackson-databind:2.20.0'
     implementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.20.0'
     implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.20.0'
@@ -42,8 +42,10 @@ dependencies {
     //OPENAPI DOC (SWAGGER API 연동)
     implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.8.13'
 
-
-
+    //JAXB
+    implementation 'jakarta.xml.bind:jakarta.xml.bind-api:4.0.2'
+    implementation 'org.glassfish.jaxb:jaxb-runtime:4.0.5'
+}
 
 tasks.named('test') {
     useJUnitPlatform()
