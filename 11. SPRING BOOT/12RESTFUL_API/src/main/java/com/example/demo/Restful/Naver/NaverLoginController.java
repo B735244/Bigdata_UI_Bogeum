@@ -114,7 +114,7 @@ public class NaverLoginController {
         model.addAttribute("email", email);
         model.addAttribute("name", name);
 
-//     
+//
 //
         return "th/naver/index";
     }
