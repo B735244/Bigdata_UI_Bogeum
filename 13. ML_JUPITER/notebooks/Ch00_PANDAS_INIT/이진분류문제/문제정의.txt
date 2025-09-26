@@ -1,0 +1,21 @@
+# -----------------------------
+# 문제정의
+# -----------------------------
+# 고객이 계정을 유지할지, 아니면 해지(이탈)할지를 예측
+
+# -------------
+# 컬럼해석
+# -------------
+# CustomerID: 고객 고유 식별자
+# Surname: 고객 성(Last name)
+# CreditScore: 신용 점수(숫자)
+# Geography: 거주 국가(France/Spain/Germany)
+# Gender: 성별(Male/Female)
+# Age: 나이
+# Tenure: 은행 이용 기간(연수)
+# Balance: 계좌 잔액
+# NumOfProducts: 이용 중인 은행 상품 수(예: 예금, 카드 등)
+# HasCrCard: 신용카드 보유 여부(1=예, 0=아니오)
+# IsActiveMember: 활성 회원 여부(1=예, 0=아니오)
+# EstimatedSalary: 추정 급여(연봉)
+# Exited: 이탈 여부(1=이탈, 0=유지) (대회 타깃 변수)
