@@ -1,0 +1,11 @@
+링크 : https://www.kaggle.com/competitions/playground-series-s4e2?utm_source=chatgpt.com
+
+
+Overview
+Welcome to the 2024 Kaggle Playground Series! We plan to continue in the spirit of previous playgrounds, providing interesting and approachable datasets for our community to practice their machine learning skills, and anticipate a competition each month.
+
+Your Goal: The goal of this competition is to use various factors to predict obesity risk in individuals, which is related to cardiovascular disease. Good luck!
+
+목표: 이 대회의 목표는 심혈관 질환과 관련된 개인의 비만 위험을 예측하기 위해 다양한 요인을 사용하는 것입니다. 행운을 빕니다!
+
+
