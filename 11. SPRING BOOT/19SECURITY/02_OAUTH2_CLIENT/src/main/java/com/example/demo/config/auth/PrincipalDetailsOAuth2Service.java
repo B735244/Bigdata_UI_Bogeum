@@ -1,6 +1,8 @@
 package com.example.demo.config.auth;
 
+import com.example.demo.config.auth.provier.GoogleUserInfo;
 import com.example.demo.config.auth.provier.KakaoUserInfo;
+import com.example.demo.config.auth.provier.NaverUserInfo;
 import com.example.demo.config.auth.provier.OAuth2UserInfo;
 import com.example.demo.domain.dtos.UserDto;
 import com.example.demo.domain.entity.User;
@@ -48,6 +50,7 @@ public class PrincipalDetailsOAuth2Service extends DefaultOAuth2UserService {
         String provider = userRequest.getClientRegistration().getClientName();
         Map<String, Object> attributes = oAuth2User.getAttributes();
         OAuth2UserInfo oAuth2UserInfo = null;
+        String username=null;
         if (provider.startsWith("Kakao")) {
 
             Long id = (Long) attributes.get("id");
@@ -64,16 +67,30 @@ public class PrincipalDetailsOAuth2Service extends DefaultOAuth2UserService {
                     .properties(properties)
                     .kakao_account(kakao_account)
                     .build();
+            username = oAuth2UserInfo.getProvider() + "_" + oAuth2UserInfo.getProviderId();
+
 
 
         } else if (provider.startsWith("Naver")) {
+            Map<String, Object> response = (Map<String, Object>) attributes.get("response");
+            System.out.println("response:"+response);
+            oAuth2UserInfo=NaverUserInfo.builder()
+                    .response(response)
+                    .build();
+            //DB 등록할 계정명
+            username = oAuth2UserInfo.getEmail();
+
         } else if (provider.startsWith("Google")) {
+
+            oAuth2UserInfo=GoogleUserInfo.builder()
+                    .attributes(attributes)
+                    .build();
+            username = oAuth2UserInfo.getEmail();
         }
         System.out.println("oAuth2UserInfo : " + oAuth2UserInfo);
         System.out.println("========================================================================");
 
         //OAuth2정보 -> 로컬계정생성(계정x : 생성/ 계정o : 불러오기)
-        String username = oAuth2UserInfo.getProvider() + "_" + oAuth2UserInfo.getProviderId();
         String password = passwordEncoder.encode("1234");
 
         //기존 계정 존재 여부에 따라 DB 저장
