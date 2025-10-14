@@ -18,12 +18,14 @@ import java.util.Map;
 @NoArgsConstructor
 @AllArgsConstructor
 public class PrincipalDetails implements UserDetails, OAuth2User {
-    private UserDto dto;
-    Map<String, Object> attributes;
-    public PrincipalDetails(UserDto dto){
-        this.dto= dto;
-    }
 
+    private UserDto dto;
+    //OAUTH2 속성
+    Map<String, Object> attributes;
+
+    public  PrincipalDetails(UserDto dto){
+        this.dto = dto;
+    }
 
 
     @Override
@@ -43,15 +45,18 @@ public class PrincipalDetails implements UserDetails, OAuth2User {
         return authorities;
     }
 
-    // OAUTH2에서 사용되는 속성
+    //----------------------------------------------------
+    // OAUTH2 에 사용되는 메서드
+    //----------------------------------------------------
+
     @Override
     public Map<String, Object> getAttributes() {
         return attributes;
     }
 
-
-
-   //로컬 인증에서 사용되는 메서드
+    //----------------------------------------------------
+    //로컬인증에 사용되는 메서드
+    //----------------------------------------------------
     @Override
     public String getPassword() {
         return dto.getPassword();
