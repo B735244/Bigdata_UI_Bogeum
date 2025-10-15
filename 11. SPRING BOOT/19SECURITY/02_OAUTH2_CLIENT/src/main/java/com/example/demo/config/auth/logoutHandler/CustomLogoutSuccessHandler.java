@@ -23,6 +23,7 @@ public class CustomLogoutSuccessHandler implements LogoutSuccessHandler {
     @Value("${spring.security.oauth2.client.registration.kakao.logout.redirect.uri}")
     private String KAKAO_REDIRECT_URI;
 
+
     // 로컬서버 로그아웃 이후 추가 처리(ex. 카카오인증서버 연결해제..)
     @Override
     public void onLogoutSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
@@ -37,11 +38,12 @@ public class CustomLogoutSuccessHandler implements LogoutSuccessHandler {
                 response.sendRedirect("https://kauth.kakao.com/oauth/logout?client_id=" + KAKAO_CLIENT_ID + "&logout_redirect_uri=" + KAKAO_REDIRECT_URI);
                 return;
             } else if (provider!=null && provider.startsWith("Naver")) {
-
+                response.sendRedirect("https://nid.naver.com/nidlogin.logout?returl=https://www.naver.com/");
+                return ;
             } else if (provider!=null && provider.startsWith("Google")) {
-
+                response.sendRedirect("https://accounts.google.com/Logout");
+                return ;
             }
-
         response.sendRedirect("/");
 
     }
