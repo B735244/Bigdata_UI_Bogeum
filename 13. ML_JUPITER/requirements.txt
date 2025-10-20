@@ -1,4 +1,6 @@
+# --------------------
 # ML & Stats
+# --------------------
 scikit-learn
 xgboost
 lightgbm
@@ -7,13 +9,40 @@ statsmodels
 category_encoders
 imbalanced-learn
 
+# --------------------
 # Hyperparameter Tuning
+# --------------------
 optuna
 scikit-optimize
 
+# --------------------
 # Model Explainability
+# --------------------
 shap
 lime
 
+# --------------------
 # Reporting (테이블 이미지 저장)
+# --------------------
 dataframe-image
+
+# --------------------
+# EDA & Visualization
+# --------------------
+missingno
+ydata-profiling
+sweetviz
+matplotlib
+seaborn
+plotly
+
+# --------------------
+# 비지도 -  Association Rule Learning (연관 규칙 분석)
+# --------------------
+mlxtend 
+
+
+# --------------------
+# 모델저장
+# --------------------
+joblib
