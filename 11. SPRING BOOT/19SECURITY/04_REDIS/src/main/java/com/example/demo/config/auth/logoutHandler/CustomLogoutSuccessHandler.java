@@ -2,7 +2,7 @@ package com.example.demo.config.auth.logoutHandler;
 
 import com.example.demo.config.auth.PrincipalDetails;
 import com.example.demo.config.auth.jwt.JWTProperties;
-import com.example.demo.config.auth.jwt.JWTTokenProvider;
+import com.example.demo.config.auth.redis.RedisUtil;
 import com.example.demo.domain.repository.JwtTokenRepository;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.Cookie;
@@ -33,6 +33,10 @@ public class CustomLogoutSuccessHandler implements LogoutSuccessHandler {
     @Autowired
     private JwtTokenRepository jwtTokenRepository;
 
+    @Autowired
+    private RedisUtil redisUtil;
+
+
 
     // 로컬서버 로그아웃 이후 추가 처리(ex. 카카오인증서버 연결해제..)
     @Override
@@ -40,7 +44,7 @@ public class CustomLogoutSuccessHandler implements LogoutSuccessHandler {
     public void onLogoutSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
         log.info("CustomLogoutSuccessHandler's onLogoutSuccess invoke..! " + authentication);
 
-        //DB에서 Token 제거
+        //DB에 TOKEN제거
         String token = null;      //access-token 쿠키 받아 token=null;
 
         Cookie[] cookies = request.getCookies();
@@ -52,31 +56,43 @@ public class CustomLogoutSuccessHandler implements LogoutSuccessHandler {
                     .map((cookie)->{return cookie.getValue();})
                     .orElse(null);
         }
-        if(token!=null){
-            //DB에서 제거
-            jwtTokenRepository.deleteByAccessToken(token);
-            //쿠키 자체 제거
+        if(token!=null) {
+            System.out.println("TOKEN : " + token);
+            //DB 제거
+            //jwtTokenRepository.deleteByAccessToken(token);
+
+            //Redis 제거
+            redisUtil.delete("RT:"+authentication.getName());
+
+            //쿠키 제거
             Cookie cookie = new Cookie(JWTProperties.ACCESS_TOKEN_COOKIE_NAME,null);
             cookie.setMaxAge(0);
+            cookie.setPath("/");
             response.addCookie(cookie);
-        }
-        //
-            //OAuth2 확인
-        PrincipalDetails principalDetails = (PrincipalDetails) authentication.getPrincipal();
-            String provider = principalDetails.getDto().getProvider();
-            System.out.println("provider : " + provider);
 
-            if (provider!=null && provider.startsWith("Kakao")) {
-                System.out.println("!!!" + KAKAO_CLIENT_ID + " " + KAKAO_REDIRECT_URI);
-                response.sendRedirect("https://kauth.kakao.com/oauth/logout?client_id=" + KAKAO_CLIENT_ID + "&logout_redirect_uri=" + KAKAO_REDIRECT_URI);
-                return;
-            } else if (provider!=null && provider.startsWith("Naver")) {
-                response.sendRedirect("https://nid.naver.com/nidlogin.logout?returl=https://www.naver.com/");
-                return ;
-            } else if (provider!=null && provider.startsWith("Google")) {
-                response.sendRedirect("https://accounts.google.com/Logout");
-                return ;
-            }
+            Cookie cookie2 = new Cookie("username",null);
+            cookie2.setMaxAge(0);
+            cookie2.setPath("/");
+            response.addCookie(cookie2);
+        }
+
+
+
+        // OAUTH2 확인
+        PrincipalDetails principalDetails = (PrincipalDetails) authentication.getPrincipal();
+        String provider = principalDetails.getDto().getProvider();
+        System.out.println("provider : " + provider);
+        if (provider!=null && provider.startsWith("Kakao")) {
+            System.out.println("!!!" + KAKAO_CLIENT_ID + " " + KAKAO_REDIRECT_URI);
+            response.sendRedirect("https://kauth.kakao.com/oauth/logout?client_id=" + KAKAO_CLIENT_ID + "&logout_redirect_uri=" + KAKAO_REDIRECT_URI);
+            return;
+        } else if (provider!=null && provider.startsWith("Naver")) {
+            response.sendRedirect("https://nid.naver.com/nidlogin.logout?returl=https://www.naver.com/");
+            return ;
+        } else if (provider!=null && provider.startsWith("Google")) {
+            response.sendRedirect("https://accounts.google.com/Logout");
+            return ;
+        }
         response.sendRedirect("/");
 
     }

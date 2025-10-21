@@ -49,17 +49,20 @@ public class CustomSuccessHandler implements AuthenticationSuccessHandler {
         PrincipalDetails principalDetails =(PrincipalDetails)authentication.getPrincipal();
         String auth = principalDetails.getDto().getRole();
         //Token을 DB에 저장
-        JwtToken tokenEntity = JwtToken.builder()
-                .accessToken(tokenInfo.getAccessToken())
-                .refreshToken(tokenInfo.getRefreshToken())
-                .username(authentication.getName())
-                .auth(auth)
-                .createAt(LocalDateTime.now())
-                .build();
-        jwtTokenRepository.save(tokenEntity);
+//        JwtToken tokenEntity = JwtToken.builder()
+//                .accessToken(tokenInfo.getAccessToken())
+//                .refreshToken(tokenInfo.getRefreshToken())
+//                .username(authentication.getName())
+//                .auth(auth)
+//                .createAt(LocalDateTime.now())
+//                .build();
+//        jwtTokenRepository.save(tokenEntity);
 
         //Redis에 RefreshToken 저장
-
+        Cookie usernameCookie = new Cookie("username" ,authentication.getName());
+        usernameCookie.setMaxAge(JWTProperties.REFRESH_TOKEN_EXPIRATION_TIME);
+        usernameCookie.setPath("/");
+        response.addCookie(usernameCookie);
         redisUtil.setDataExpire("RT:"+authentication.getName(),tokenInfo.getRefreshToken(),JWTProperties.REFRESH_TOKEN_EXPIRATION_TIME);
 
 
