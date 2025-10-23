@@ -1,0 +1,60 @@
+$size:800px;
+
+h1 {
+  background-color: lightblue;
+}
+
+.container {
+  background-color: navy;
+  border: 3px solid salmon;
+  width: $size;
+
+  ul {
+    border: 2px solid green;
+    margin: 5px;
+    padding: 10px;
+    list-style: none;
+
+    li {
+      min-height: 35px;
+      border: 1px solid red;
+      width: 50px; 
+      margin: 5px;
+      color: white;
+    }
+
+    .age {
+      color: blue;
+    }
+
+    .name {
+      font-weight: 900;
+      color: aqua;
+    }
+  }
+}
+
+// 02
+.container2{
+  .btn {
+    text-decoration: none;
+    margin: 10px 0px;
+    padding: 10px 20px;
+    border: 1px solid darkblue;
+    color: white;
+    background-color: darkblue;
+    border-radius: 5px;
+    cursor: pointer;
+
+    &.active{
+        color: white;
+        background-color: darkmagenta;
+    }
+    
+  }
+  .fs{
+    &-small{font-size: .7rem;}
+    &-medium{font-size: .9rem;}
+    &-large{font-size: .1.2rem;}
+  }
+}

@@ -1,0 +1,55 @@
+h1 {
+  background-color: lightblue;
+}
+
+.container {
+  background-color: navy;
+  border: 3px solid salmon;
+  width: 800px;
+}
+.container ul {
+  border: 2px solid green;
+  margin: 5px;
+  padding: 10px;
+  list-style: none;
+}
+.container ul li {
+  min-height: 35px;
+  border: 1px solid red;
+  width: 50px;
+  margin: 5px;
+  color: white;
+}
+.container ul .age {
+  color: blue;
+}
+.container ul .name {
+  font-weight: 900;
+  color: aqua;
+}
+
+.container2 .btn {
+  text-decoration: none;
+  margin: 10px 0px;
+  padding: 10px 20px;
+  border: 1px solid darkblue;
+  color: white;
+  background-color: darkblue;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.container2 .btn.active {
+  color: white;
+  background-color: darkmagenta;
+}
+.container2 .fs-small {
+  font-size: 0.7rem;
+}
+.container2 .fs-medium {
+  font-size: 0.9rem;
+}
+.container2 .fs-large {
+  font-size: 0.1 0.2rem;
+}
+
+/*# sourceMappingURL=/01.fedf566a.css.map */
