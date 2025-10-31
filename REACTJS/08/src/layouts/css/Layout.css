@@ -1,0 +1,14 @@
+*{box-sizing: border-box;}
+a{text-decoration: none;color:black;}
+ul{list-style: none;padding : 0;}
+body{ margin:0; padding : 0;}
+
+.wrapper{}
+.wrapper>header{min-height:100px; border:1px solid;}
+.wrapper>header>.top-header{min-height:50px;border-bottom:1px solid;}
+.wrapper>header>nav{}
+
+.wrapper>main{display:flex;min-height:500px;}
+.wrapper>main>aside{min-width:300px;border-right:1px solid;}
+.wrapper>footer{min-height:150px;border:1px solid;}
+
