@@ -18,7 +18,7 @@ import java.util.Map;
 @RestController
 @Slf4j
 @RequestMapping("/memo")
-@CrossOrigin(origins={"http://localhost:3000","http://127.0.0.1:3000"})
+@CrossOrigin(origins={"http://localhost:3002","http://127.0.0.1:3002"})
 public class MemoController {
 
     @PostMapping(value="/add",consumes = MediaType.APPLICATION_JSON_VALUE,produces= MediaType.APPLICATION_JSON_VALUE)

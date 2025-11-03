@@ -14,6 +14,7 @@ const List = ()=>{
           console.log(response.data);
         })
         .catch(error => {
+            console.log(error)
             console.error('error.response.data', error.response.data);
             navigate('/exception', { state: { message: error.response.data.message, status: error.response?.status } } );
         });

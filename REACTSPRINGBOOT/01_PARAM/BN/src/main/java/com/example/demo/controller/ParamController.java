@@ -1,7 +1,8 @@
-package com.example.app.controller;
+package com.example.demo.controller;
 
 
-import com.example.app.controller.domain.dto.PersonDto;
+import com.example.demo.domain.dto.PersonDto;
+
 import lombok.extern.slf4j.Slf4j;
 import org.apache.coyote.Response;
 import org.springframework.http.HttpStatus;
@@ -16,7 +17,7 @@ import java.util.Map;
 @RestController
 @Slf4j
 @RequestMapping("/param")
-@CrossOrigin(origins={"http://localhost:3000","http://127.0.0.1:3000"})
+@CrossOrigin(origins={"http://localhost:3001","http://127.0.0.1:3000"})
 public class ParamController {
 
     @RequestMapping(value="/01",method={RequestMethod.GET,RequestMethod.POST} , produces= MediaType.APPLICATION_JSON_VALUE)
