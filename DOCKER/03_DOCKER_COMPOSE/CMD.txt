@@ -1,0 +1,35 @@
+# 이미지 생성
+docker build -t 이미지명:태그명 도커파일 위치
+
+# 이미지 확인
+docker images
+
+# 이미지 삭제
+docker rmi imageid
+
+# 도커 이미지 내 진입
+docker run -i [id or 이미지명] sh
+
+# 임시컨테이너 생성*(종료시 삭제) + 포트 연결
+docker run -it --rm -p 3000:80 fn
+
+# ================================================================================
+# < Docker Network 생성(순서 지켜서) >
+1. docker network create --driver bridge my-network
+이후
+# DB Container 생성
+2. docker run -d --name db-container --network my-network -p 3330:3306 db:1.1
+
+# REDIS Container 생성
+3. docker run -d --name redis-container --network my-network -p 6380:6379 redis:1.1
+
+# BN Container 생성
+4. docker run -d --name bn-container --network my-network -p 8090:8090 bn:1.1
+
+# FN Container 생성
+5. docker run -d --name fn-container --network my-network -p 3000:80 fn:1.1
+# ================================================================================
+
+#=================================================================================
+# < DOCKER COMPOSE >
+# 위에 image, container를 각각 만드니까 귀찮았는데 한방에 만들 수 있음
