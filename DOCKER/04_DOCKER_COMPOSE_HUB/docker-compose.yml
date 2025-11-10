@@ -1,0 +1,88 @@
+version: '3.8'
+
+networks:
+  custom-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet : 172.30.0.0/24
+          gateway : 172.30.0.1
+
+services:
+  db:
+    image: qhrma6623/sony-init:db
+   
+   
+    container_name: db-container
+    networks:
+      custom-network:
+        ipv4_address: 172.30.0.10
+    healthcheck:
+      test: [ "CMD", "mysqladmin", "ping", "-h", "127.0.0.1" ]
+      interval: 30s
+      timeout: 10s
+      retries: 5          
+    ports:
+      - "3330:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: Zhfldk11!
+      MYSQL_DATABASE: testdb
+      MYSQL_USER: dbconn
+      MYSQL_PASSWORD: Zhfldk11!
+      MYSQL_ROOT_HOST: '%' 
+    volumes:
+      # - ./DB/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - db-data:/var/lib/mysql           
+  
+  redis:
+    image: qhrma6623/sony-initredis
+   
+    container_name: redis-container
+    ports:
+      - "6380:6379"
+    networks:
+      custom-network:
+        ipv4_address: 172.30.0.20  
+  fn:
+    image: qhrma6623/sony-init:fn
+    
+    container_name: fn-container
+    ports:
+      - "3000:80"
+    depends_on:
+      bn:
+        condition: service_healthy
+    networks:
+      custom-network:
+        ipv4_address: 172.30.0.30 
+
+  bn:
+    image: qhrma6623/sony-init:bn
+    
+    container_name: bn-container
+    ports:
+      - "8090:8090"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://db-container:3306/testdb
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: Zhfldk11!
+      SPRING_REDIS_HOST: redis
+      SERVER_PORT: 8090
+
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f  http://127.0.0.1:8090/actuator/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+    depends_on:
+      db:
+        condition: service_healthy
+
+    networks:
+      custom-network:
+        ipv4_address: 172.30.0.40  
+
+        
+volumes:
+  db-data:

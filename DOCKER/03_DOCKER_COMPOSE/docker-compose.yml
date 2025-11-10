@@ -5,8 +5,8 @@ networks:
     driver: bridge
     ipam:
       config:
-        - subnet: 172.30.0.0/24
-          gateway: 172.30.0.1
+        - subnet : 172.30.0.0/24
+          gateway : 172.30.0.1
 
 services:
   db:
@@ -17,12 +17,12 @@ services:
     container_name: db-container
     networks:
       custom-network:
-          ipv4_address: 172.30.0.10
+        ipv4_address: 172.30.0.10
     healthcheck:
       test: [ "CMD", "mysqladmin", "ping", "-h", "127.0.0.1" ]
       interval: 30s
       timeout: 10s
-      retries: 5
+      retries: 5          
     ports:
       - "3330:3306"
     environment:
@@ -30,10 +30,11 @@ services:
       MYSQL_DATABASE: testdb
       MYSQL_USER: dbconn
       MYSQL_PASSWORD: Zhfldk11!
-      MYSQL_ROOT_HOST: '%'
+      MYSQL_ROOT_HOST: '%' 
     volumes:
-      - db-data:/var/lib/mysql
-
+      # - ./DB/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - db-data:/var/lib/mysql           
+  
   redis:
     image: redis
     build:
@@ -43,9 +44,7 @@ services:
       - "6380:6379"
     networks:
       custom-network:
-          ipv4_address: 172.30.0.20
-
-
+        ipv4_address: 172.30.0.20  
   fn:
     image: fn
     build:
@@ -58,7 +57,7 @@ services:
         condition: service_healthy
     networks:
       custom-network:
-          ipv4_address: 172.30.0.30
+        ipv4_address: 172.30.0.30 
 
   bn:
     image: bn
@@ -73,17 +72,21 @@ services:
       SPRING_DATASOURCE_PASSWORD: Zhfldk11!
       SPRING_REDIS_HOST: redis
       SERVER_PORT: 8090
+
     healthcheck:
-      test: [ "CMD-SHELL", "curl -f http://127.0.0.1:8090/actuator" ]
+      test: ["CMD-SHELL", "curl -f  http://127.0.0.1:8090/actuator/health"]
       interval: 30s
       timeout: 10s
       retries: 5
+
     depends_on:
       db:
         condition: service_healthy
+
     networks:
       custom-network:
-          ipv4_address: 172.30.0.40
+        ipv4_address: 172.30.0.40  
 
+        
 volumes:
   db-data:
