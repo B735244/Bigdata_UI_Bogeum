@@ -12,7 +12,7 @@ services:
   db:
     image: qhrma6623/sony-init:db
    
-   
+    
     container_name: db-container
     networks:
       custom-network:
